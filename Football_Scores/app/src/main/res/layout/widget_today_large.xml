@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin">
+
+    <RelativeLayout
+        android:id="@+id/widget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/touch_selector_white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/widget_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/widget_text"
+            tools:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/widget_home_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/widget_icon"
+            android:layout_toRightOf="@id/widget_icon"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingLeft="@dimen/widget_padding"
+            android:paddingStart="@dimen/widget_padding"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/purple01"
+            tools:text="Team1" />
+
+        <TextView
+            android:id="@+id/widget_away_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/widget_home_team"
+            android:layout_toRightOf="@id/widget_home_team"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingLeft="@dimen/widget_padding"
+            android:paddingStart="@dimen/widget_padding"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/purple01"
+            tools:text="Team2" />
+
+        <TextView
+            android:id="@+id/widget_match_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:gravity="end"
+            android:layout_toRightOf="@id/widget_away_team"
+            android:layout_toEndOf="@id/widget_away_team"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingLeft="@dimen/widget_padding"
+            android:paddingStart="@dimen/widget_padding"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/purple01"
+            tools:text="Score"/>
+
+    </RelativeLayout>
+</FrameLayout>
