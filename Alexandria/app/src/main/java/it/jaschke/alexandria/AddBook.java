@@ -22,7 +22,7 @@ import android.widget.Toast;
 import it.jaschke.alexandria.data.AlexandriaContract;
 import it.jaschke.alexandria.services.BookService;
 import it.jaschke.alexandria.services.DownloadImage;
-import me.dm7.barcodescanner.zbar.ZBarScannerView;
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
 public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -37,7 +37,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
     private String mScanFormat = "Format:";
     private String mScanContents = "Contents:";
 
-    private ZBarScannerView mScannerView;
+    private ZXingScannerView mScannerView;
 
 
     public AddBook(){
@@ -70,6 +70,8 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
             @Override
             public void afterTextChanged(Editable s) {
+                //Error: Alexandria won't pull up the images for books with ISBNs that are 10 chars. I don't know why.
+
                 String ean = s.toString();
                 //catch isbn10 numbers
                 //if (ean.length() == 10 && !ean.startsWith("978")) {
@@ -174,6 +176,8 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         ((TextView) rootView.findViewById(R.id.bookSubTitle)).setText(bookSubTitle);
 
         String authors = data.getString(data.getColumnIndex(AlexandriaContract.AuthorEntry.AUTHOR));
+        //added a check for unknown authors as per review (thanks)
+        if(authors == null){authors = "Unknown";}
         String[] authorsArr = authors.split(",");
         ((TextView) rootView.findViewById(R.id.authors)).setLines(authorsArr.length);
         ((TextView) rootView.findViewById(R.id.authors)).setText(authors.replace(",","\n"));

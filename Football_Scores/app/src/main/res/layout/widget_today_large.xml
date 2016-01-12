@@ -20,7 +20,7 @@
             android:layout_centerVertical="true"
             android:scaleType="centerInside"
             android:contentDescription="@string/widget_text"
-            tools:src="@drawable/ic_launcher" />
+            tools:src="@drawable/arsenal" />
 
         <TextView
             android:id="@+id/widget_home_team"
@@ -33,7 +33,7 @@
             android:paddingLeft="@dimen/widget_padding"
             android:paddingStart="@dimen/widget_padding"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/purple01"
+            android:textColor="@color/primary_text"
             tools:text="Team1" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:paddingLeft="@dimen/widget_padding"
             android:paddingStart="@dimen/widget_padding"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/purple01"
+            android:textColor="@color/secondary_text"
             tools:text="Team2" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:paddingLeft="@dimen/widget_padding"
             android:paddingStart="@dimen/widget_padding"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/purple01"
+            android:textColor="@color/black"
             tools:text="Score"/>
 
     </RelativeLayout>

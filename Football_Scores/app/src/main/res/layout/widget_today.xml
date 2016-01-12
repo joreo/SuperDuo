@@ -35,7 +35,7 @@
                 android:layout_gravity="start"
                 android:fontFamily="sans-serif"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@color/purple01"
+                android:textColor="@color/primary_text"
                 tools:text="48" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:layout_gravity="start"
                 android:fontFamily="sans-serif"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/purple06"
+                android:textColor="@color/secondary_text"
                 tools:text="28" />
         </LinearLayout>
     </RelativeLayout>

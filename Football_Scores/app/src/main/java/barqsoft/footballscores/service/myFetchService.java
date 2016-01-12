@@ -92,7 +92,7 @@ public class myFetchService extends IntentService
         }
         catch (Exception e)
         {
-            Log.e(LOG_TAG,"Exception here" + e.getMessage());
+            Log.e(LOG_TAG,"Exception here " + e.getMessage());
         }
         finally {
             if(m_connection != null)
@@ -106,7 +106,7 @@ public class myFetchService extends IntentService
                 }
                 catch (IOException e)
                 {
-                    Log.e(LOG_TAG,"Error Closing Stream");
+                    Log.e(LOG_TAG,"Error Closing Stream ");
                 }
             }
         }

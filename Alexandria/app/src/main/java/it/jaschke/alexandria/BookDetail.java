@@ -98,9 +98,17 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text)+bookTitle);
-        shareActionProvider.setShareIntent(shareIntent);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text) + bookTitle);
+        if(shareActionProvider == null){
+            //I couldn't recreate the crash criteria from my review, but my google-fu
+            //is suggesting that this is what I want to do to prevent the crash
+            //I got the info from here: http://stackoverflow.com/questions/23332962/call-oncreateoptionsmenu-in-onpostcreate
+            //Please let me know if this is wrong. Thanks!
+            getActivity().invalidateOptionsMenu();
 
+        } else {
+            shareActionProvider.setShareIntent(shareIntent);
+            }
         String bookSubTitle = data.getString(data.getColumnIndex(AlexandriaContract.BookEntry.SUBTITLE));
         ((TextView) rootView.findViewById(R.id.fullBookSubTitle)).setText(bookSubTitle);
 
@@ -108,6 +116,8 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
         ((TextView) rootView.findViewById(R.id.fullBookDesc)).setText(desc);
 
         String authors = data.getString(data.getColumnIndex(AlexandriaContract.AuthorEntry.AUTHOR));
+        //added a check for unknown authors as per review (thanks)
+        if(authors == null){authors = "Unknown";}
         String[] authorsArr = authors.split(",");
         ((TextView) rootView.findViewById(R.id.authors)).setLines(authorsArr.length);
         ((TextView) rootView.findViewById(R.id.authors)).setText(authors.replace(",","\n"));
@@ -120,9 +130,9 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
         String categories = data.getString(data.getColumnIndex(AlexandriaContract.CategoryEntry.CATEGORY));
         ((TextView) rootView.findViewById(R.id.categories)).setText(categories);
 
-        if(rootView.findViewById(R.id.right_container)!=null){
-            rootView.findViewById(R.id.backButton).setVisibility(View.INVISIBLE);
-        }
+//        if(rootView.findViewById(R.id.right_container)!=null){
+//            rootView.findViewById(R.id.backButton).setVisibility(View.INVISIBLE);
+//        }
 
     }
 

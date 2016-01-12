@@ -5,19 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import it.jaschke.alexandria.services.BookService;
-import me.dm7.barcodescanner.zbar.Result;
-import me.dm7.barcodescanner.zbar.ZBarScannerView;
+import com.google.zxing.Result;
 
-public class BarcodeScanner extends Activity implements ZBarScannerView.ResultHandler {
+import it.jaschke.alexandria.services.BookService;
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+
+
+public class BarcodeScanner extends Activity implements ZXingScannerView.ResultHandler {
 
     public static final String EXTRA_BAR_CODE = "barCode";
-    private ZBarScannerView scannerView;
+    private ZXingScannerView scannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        scannerView = new ZBarScannerView(this);
+        scannerView = new ZXingScannerView(this);
         scannerView.setResultHandler(this);
         setContentView(scannerView);
     }
@@ -37,7 +40,7 @@ public class BarcodeScanner extends Activity implements ZBarScannerView.ResultHa
     @Override
     public void handleResult(Result result) {
 
-        String ean = result.getContents();
+        String ean = result.getText();
         Log.e("contents pre", ean);
         if (ean.length() == 10 && !ean.startsWith("978")) {
             ean = "978" + ean;
@@ -45,7 +48,7 @@ public class BarcodeScanner extends Activity implements ZBarScannerView.ResultHa
 
         Intent bookIntent = new Intent(this, BookService.class);
         bookIntent.putExtra(BookService.EAN, ean);
-        Log.e("contents post", ean);
+        Log.e("text post:", ean);
         bookIntent.setAction(BookService.FETCH_BOOK);
         this.startService(bookIntent);
 

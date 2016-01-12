@@ -3,8 +3,8 @@
     package="barqsoft.footballscores" >
 
     <uses-permission
-        android:name="android.permission.INTERNET"
-        android:maxSdkVersion="22" />
+        android:name="android.permission.INTERNET"/>
+        <!--android:maxSdkVersion="22" />-->
 
     <!-- RTL = TRUE -->
     <application
@@ -48,6 +48,9 @@
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_today" />
         </receiver>
+        <service android:name=".widget.TodayWidgetRemoteViewsService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

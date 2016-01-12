@@ -13,7 +13,7 @@
     <string name="premierleague" translatable="false">Premier League</string>
     <string name="primeradivison" translatable="false">Primera Division</string>
     <string name="seriaa">Serie A</string>
-    <string name="matchday_text">Match day</string>
+    <string name="matchday_text">Match day : </string>
     <string name="group_stage_text">Group stages</string>
     <string name="first_knockout_round">First knockout round</string>
     <string name="quarter_final">Quarter Final</string>
@@ -43,4 +43,9 @@
 
     <!---Widget Stuff-->
     <string name="title_widget_today" translatable="false">Football Scores</string>
+
+    <!---Moving hard coded strings-->
+    <string name="league_unknown">Unknown League. Please report.</string>
+    <string name="matchday_groupstages">Group Stages, Matchday : 6</string>
+    <string name="empty_list">Empty List</string>
 </resources>

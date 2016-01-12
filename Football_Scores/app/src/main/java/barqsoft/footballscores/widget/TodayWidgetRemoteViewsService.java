@@ -3,7 +3,6 @@ package barqsoft.footballscores.widget;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
@@ -19,7 +18,7 @@ import barqsoft.footballscores.R;
 public class TodayWidgetRemoteViewsService extends RemoteViewsService {
     public final String LOG_TAG = TodayWidgetRemoteViewsService.class.getSimpleName();
     private static final String[] SCORES_COLUMNS = {
-            DatabaseContract.scores_table._ID,
+            DatabaseContract.scores_table.MATCH_ID,
             DatabaseContract.scores_table.AWAY_COL,
             DatabaseContract.scores_table.AWAY_GOALS_COL,
             DatabaseContract.scores_table.HOME_COL,
@@ -27,6 +26,7 @@ public class TodayWidgetRemoteViewsService extends RemoteViewsService {
             DatabaseContract.scores_table.DATE_COL
     };
     // these indices must match the projection
+
     static final int INDEX_SCORES_ID = 0;
     static final int INDEX_SCORES_AWAY_COL = 1;
     static final int INDEX_SCORES_AWAY_GOALS_COL = 2;
@@ -42,6 +42,7 @@ public class TodayWidgetRemoteViewsService extends RemoteViewsService {
             @Override
             public void onCreate() {
                 // Nothing to do
+                Log.e("RVF", "onCreate");
             }
 
             @Override
@@ -89,9 +90,9 @@ public class TodayWidgetRemoteViewsService extends RemoteViewsService {
                 }
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.widget_today_large);
-                int weatherId = data.getInt(INDEX_SCORES_AWAY_GOALS_COL);
-                int weatherArtResourceId = R.drawable.ic_launcher;
-                Bitmap weatherArtImage = null;
+//                int weatherId = data.getInt(INDEX_SCORES_AWAY_GOALS_COL);
+//                int weatherArtResourceId = R.drawable.ic_launcher;
+//                Bitmap weatherArtImage = null;
 //                if ( !Utility.usingLocalGraphics(DetailWidgetRemoteViewsService.this) ) {
 //                    String weatherArtResourceUrl = Utility.getArtUrlForWeatherCondition(
 //                            DetailWidgetRemoteViewsService.this, weatherId);

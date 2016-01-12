@@ -15,4 +15,6 @@
     <dimen name="widget_single_width">40dp</dimen>
     <dimen name="widget_margin">1dp</dimen>
     <dimen name="widget_padding">16dp</dimen>
+    <dimen name="widget_text_size">24dp</dimen>
+    <dimen name="widget_text_width">38dp</dimen>
 </resources>
